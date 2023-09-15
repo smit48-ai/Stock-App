@@ -1,87 +1,111 @@
-import React from "react";
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator} from 'react-native';
 import {
-  Text,
-  Link,
-  HStack,
-  Center,
-  Heading,
-  Switch,
-  useColorMode,
   NativeBaseProvider,
-  extendTheme,
   VStack,
+  Heading,
+  Text,
   Box,
-} from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
+  Input,
+  ScrollView,
+} from 'native-base';
 
-// Define the config
-const config = {
-  useSystemColorMode: false,
-  initialColorMode: "dark",
+type StockType = {
+  symbol: string;
+  name: string;
+  currency: string;
+  exchange: string;
+  mic_code: string;
+  country: string;
+  type: string;
 };
 
-// extend the theme
-export const theme = extendTheme({ config });
-type MyThemeType = typeof theme;
-declare module "native-base" {
-  interface ICustomTheme extends MyThemeType {}
+function SearchBar() {
+  return (
+    <VStack my="4" space={5} w="100%">
+      <VStack w="100%" space={5} alignSelf="center">
+        <Input
+          placeholder="Search by Stock name"
+          width="100%"
+          borderRadius="4"
+          borderColor="indigo.600"
+          py="3"
+          px="1"
+          fontSize="lg"
+        />
+      </VStack>
+    </VStack>
+  );
 }
-export default function App() {
+
+function App(): JSX.Element {
+  // const {colors} = useTheme();
+  const [AllStocks, setAllStock] = useState<Array<StockType>>([]);
+
+  const getStockData = () => {
+    return fetch('https://api.twelvedata.com/stocks?symbol=AAPL', {
+      headers: {
+        Authorization: 'apikey 82a4c4fb38cb4466adc1f94dabe99bda',
+      },
+    })
+      .then(response => response.json())
+      .then(json => setAllStock(json.data))
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    getStockData();
+  }, []);
+
   return (
     <NativeBaseProvider>
-      <Center
-        _dark={{ bg: "blueGray.900" }}
-        _light={{ bg: "blueGray.50" }}
-        px={4}
-        flex={1}
-      >
-        <VStack space={5} alignItems="center">
-          <NativeBaseIcon />
-          <Heading size="lg">Welcome to NativeBase</Heading>
-          <HStack space={2} alignItems="center">
-            <Text>Edit</Text>
-            <Box
-              _web={{
-                _text: {
-                  fontFamily: "monospace",
-                  fontSize: "sm",
-                },
-              }}
-              px={2}
-              py={1}
-              _dark={{ bg: "blueGray.800" }}
-              _light={{ bg: "blueGray.200" }}
-            >
-              App.js
-            </Box>
-            <Text>and save to reload.</Text>
-          </HStack>
-          <Link href="https://docs.nativebase.io" isExternal>
-            <Text color="primary.500" underline fontSize={"xl"}>
-              Learn NativeBase
-            </Text>
-          </Link>
-          <ToggleDarkMode />
-        </VStack>
-      </Center>
+      <VStack m="4" mt="20">
+        <Heading size="2xl">
+          <Text color="indigo.500">Stock App</Text>
+        </Heading>
+        <Box
+          bg="indigo.700"
+          mt="5"
+          p="4"
+          height="200"
+          borderRadius="md"
+          shadow="5">
+          <Heading size="xl">
+            <Text color="white">Market</Text>
+          </Heading>
+          <Text color="white" fontSize="lg">
+            Market is up By 20
+          </Text>
+        </Box>
+        <SearchBar></SearchBar>
+        {AllStocks.length ? (
+          <ScrollView mt="4" h="300">
+            <VStack shadow="1">
+              {AllStocks.map((stock: StockType): JSX.Element => {
+                return (
+                  <Box
+                    p="4"
+                    m="1"
+                    borderWidth="1"
+                    borderRadius="md"
+                    borderColor="indigo.300"
+                    flexDirection="row"
+                    justifyContent="space-between">
+                    <Text fontSize="md">{stock.name}</Text>
+                    <Text fontSize="sm">{stock.currency}</Text>
+                  </Box>
+                );
+              })}
+            </VStack>
+          </ScrollView>
+        ) : (
+          <ActivityIndicator></ActivityIndicator>
+        )}
+      </VStack>
     </NativeBaseProvider>
   );
 }
 
-// Color Switch Component
-function ToggleDarkMode() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  return (
-    <HStack space={2} alignItems="center">
-      <Text>Dark</Text>
-      <Switch
-        isChecked={colorMode === "light"}
-        onToggle={toggleColorMode}
-        aria-label={
-          colorMode === "light" ? "switch to dark mode" : "switch to light mode"
-        }
-      />
-      <Text>Light</Text>
-    </HStack>
-  );
-}
+export default App;
