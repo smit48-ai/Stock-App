@@ -1,18 +1,5 @@
 # Stock Analysis App
-<head>
-<style>
-.logos-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logos-container img {
-    margin-right: 20px; /* Adjust this value to control the spacing between logos */
-}
-</style>
-</head>
-<div class="logos-container">
+<div style="display:flex; justify-content:center;">
     <img src="/assets/firebase-logo.png" alt="Logo 1" width="100" height="100">
     <img src="/assets/react-native-logo.png" alt="Logo 2" width="100" height="100">
     <img src="/assets/nativebase-logo.svg" alt="Logo 2" width="100" height="100">
@@ -76,18 +63,20 @@ To get started with the app, follow these steps:
    ```
 
 ## Usage
-![image1](assets/1.jpg)
-![image2](assets/2.jpg)
-![image3](assets/3.jpg)
-![image4](assets/4.jpg)
-![image5](assets/5.jpg)
-![image6](assets/6.jpg)
-![image7](assets/7.jpg)
-![image8](assets/8.jpg)
-![image9](assets/9.jpg)
-![image10](assets/10.jpg)
-![image11](assets/11.jpg)
-![image12](assets/12.jpg)
+<div style="display:flex; flex-wrap:wrap;">
+    <img src="/assets/1.jpg" alt="image 1" width="200" height="400">
+    <img src="/assets/2.jpg" alt="image 2" width="200" height="400">
+    <img src="/assets/3.jpg" alt="image 3" width="200" height="400">
+    <img src="/assets/4.jpg" alt="image 4" width="200" height="400">
+    <img src="/assets/5.jpg" alt="image 5" width="200" height="400">
+    <img src="/assets/6.jpg" alt="image 6" width="200" height="400">
+    <img src="/assets/7.jpg" alt="image 7" width="200" height="400">
+    <img src="/assets/8.jpg" alt="image 8" width="200" height="400">
+    <img src="/assets/9.jpg" alt="image 9" width="200" height="400">
+    <img src="/assets/10.jpg" alt="image 10" width="200" height="400">
+    <img src="/assets/11.jpg" alt="image 11" width="200" height="400">
+    <img src="/assets/12.jpg" alt="image 12" width="200" height="400">
+</div>
 
 
 
