@@ -1,12 +1,5 @@
 # Stock Analysis App
-
-<div class="logos-container">
-    <img src="/assets/firebase-logo.png" alt="Logo 1" width="100" height="100">
-    <img src="/assets/react-native-logo.png" alt="Logo 2" width="100" height="100">
-    <img src="/assets/nativebase-logo.svg" alt="Logo 2" width="100" height="100">
-    <!-- Add more logo images as needed -->
-</div>
-
+<head>
 <style>
 .logos-container {
     display: flex;
@@ -18,6 +11,15 @@
     margin-right: 20px; /* Adjust this value to control the spacing between logos */
 }
 </style>
+</head>
+<div class="logos-container">
+    <img src="/assets/firebase-logo.png" alt="Logo 1" width="100" height="100">
+    <img src="/assets/react-native-logo.png" alt="Logo 2" width="100" height="100">
+    <img src="/assets/nativebase-logo.svg" alt="Logo 2" width="100" height="100">
+    <!-- Add more logo images as needed -->
+</div>
+
+
 
 <!-- 
 ![Firebase Logo](/assets/firebase-logo.png | width=100) ![React Native Logo](/assets/react-native-logo.png) 
