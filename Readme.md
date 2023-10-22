@@ -1,7 +1,27 @@
 # Stock Analysis App
 
-![Firebase Logo](/assets/firebase-logo.png) ![React Native Logo](/assets/react-native-logo.png) 
-![Native Base Logo](/assets/nativebase-logo.svg)
+<div class="logos-container">
+    <img src="/assets/firebase-logo.png" alt="Logo 1" width="100" height="100">
+    <img src="/assets/react-native-logo.png" alt="Logo 2" width="100" height="100">
+    <img src="/assets/nativebase-logo.svg" alt="Logo 2" width="100" height="100">
+    <!-- Add more logo images as needed -->
+</div>
+
+<style>
+.logos-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logos-container img {
+    margin-right: 20px; /* Adjust this value to control the spacing between logos */
+}
+</style>
+
+<!-- 
+![Firebase Logo](/assets/firebase-logo.png | width=100) ![React Native Logo](/assets/react-native-logo.png) 
+![Native Base Logo](/assets/nativebase-logo.svg) -->
 
 ## Description
 
